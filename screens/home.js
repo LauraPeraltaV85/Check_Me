@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { StyleSheet, Text, View, Image, FlatList, ActivityIndicator, Alert } from 'react-native'
+import { StyleSheet, Text, View, Image, FlatList, Alert } from 'react-native'
 import {Card, FAB} from 'react-native-paper'
 
 const Home =  ({navigation}) => {
@@ -24,7 +24,7 @@ const Home =  ({navigation}) => {
     const renderList = ((item) =>{
         return (
             <Card style={styles.mycard}
-                onPress={()=>navigation.navigate("Profile", {item})}>
+                onPress={()=>navigation.navigate("TryAgain", {item})}>
                 <View style={styles.cardView}>
                     <Image 
                         style={{width:70, height:70, borderRadius : 50}}
@@ -52,7 +52,7 @@ const Home =  ({navigation}) => {
                 onRefresh={()=>fetchData()}
                 refreshing={loading}
                 />
-            <FAB    onPress={()=>navigation.navigate('Create')}
+            <FAB    onPress={()=>navigation.navigate('Login')}
                     style={styles.fab}
                     small
                     icon="plus"
