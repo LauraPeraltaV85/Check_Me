@@ -1,16 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Contants from 'expo-constants'
 import Home from './screens/home'
-import CreateEmployee from './screens/CreateEmployee'
-import Profile from './screens/profile'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
+import Login from './screens/login';
+import Welcome from './screens/welcome';
+import TryAgain from './screens/tryagain';
+import CreateOrNot from './screens/CreateOrNot'
 
 const Stack = createStackNavigator();
 
 const myOptions = {
-  title: 'Employees',
+  title: '',
   headerTintColor: 'white',
   headerStyle:{
     backgroundColor: '#0B132B'
@@ -21,11 +22,15 @@ function App() {
   return (
     <View style={styles.container}>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} options={myOptions} />
-        <Stack.Screen name="Create" component={CreateEmployee} 
-          options={{...myOptions, title: 'Create Employee'}} />
-        <Stack.Screen name="Profile" component={Profile} 
-          options={{...myOptions, title: 'Profile'}} />
+        {/* <Stack.Screen name="Home" component={Home} options={myOptions} /> */}
+        <Stack.Screen name="CreateOrNot" component={CreateOrNot} 
+          options={{...myOptions}} />
+        <Stack.Screen name="Login" component={Login} 
+          options={{...myOptions}} />
+        {/* <Stack.Screen name="Welcome" component={Welcome} 
+          options={{...myOptions}} /> */}
+        <Stack.Screen name="TryAgain" component={TryAgain} 
+          options={{...myOptions}} />
       </Stack.Navigator>
     </View>
   );

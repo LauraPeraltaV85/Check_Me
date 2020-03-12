@@ -1,34 +1,24 @@
 const express = require('express')
+const axios = require('axios')
 const app = express()
 const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
-require('./employee')
+const fs = require('fs')
 
+
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
-//password = QMYa4AQcA1zkSs1j
-const Employee = mongoose.model('employee')
-const mongoUri = 'mongodb+srv://lp:QMYa4AQcA1zkSs1j@employeeapp-4bq98.mongodb.net/test?retryWrites=true&w=majority'
+const lod = 'southcentralus.api.cognitive.microsoft.com';
+const key = 'e550a95f3f2f4d028784ac6273cc330b'
 
-mongoose.connect(mongoUri,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-})
-
-mongoose.connection.on('connected', ()=>{
-    console.log('connected to mongo')
-})
-
-mongoose.connection.on('error', (err)=>{
-    console.log('error', err)
-})
-app.get('/',(req,res)=>{
-    Employee.find({}).then(data=>{
-        res.send(data)
-    }).catch(err=>{
-        console.log(err)
-    })
-})
+const base_instance_options = {
+    baseURL: `https://${loc}/face/v1.0`,
+    timeout: 1000,
+    headers: {
+        'Content-Type': 'application/json',
+        'Ocp-Apim-Suscription-Key': 'fe9361ea-9cf2-41a4-a8bb-281ea3334682' 
+    }
+}
 
 app.post('/send-data',(req,res)=>{
     const employee = new Employee({
@@ -70,7 +60,3 @@ app.post('/update', (req,res)=>{
 app.listen(3000, ()=>{
     console.log('server running')
 })
-
-  //  "email":"lpv@lpv.com",
-    //"phone":"12345",
-   // "picture":"some url",
