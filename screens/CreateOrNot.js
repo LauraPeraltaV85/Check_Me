@@ -26,8 +26,38 @@ const CreateOrNot = ({navigation,route}) =>{
     const [pass, setPass] = useState(getDetails('pass'))
     const [picture, setPicture] = useState(getDetails('picture'))
     const [modal, setModal] = useState(false)
-    const [enableshift,setEnableshift] = useState(false)
-
+    
+    const verify = async (url) => {
+        await fetch('https://api.kairos.com/verify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                    'app_id': 'b4563047',
+                    'app_key': '93ef16866482b1d592900953ca280cf1'
+                },
+            body: JSON.stringify({
+                'image': url,
+                'subject_id': 'laura@bog.com',
+                "gallery_name": "MyGallery"
+                })
+            }).then((res) => res.json()).then((data) => {
+                console.log('Esto es el data del verify')
+                console.log(picture)
+                console.log(data)
+                console.log(data.images[0].transaction);
+                if (data.images[0].transaction.confidence < 0.6){
+                    console.log('no eres tu')
+                    navigation.navigate('TryAgain')
+                } else {
+                    console.log('eres tu')
+                    navigation.navigate('Welcome')
+                }
+            }).catch((e) => {
+                console.log(e);
+        });
+    }        
+    //verify();
+    
     const pickFromCamera = async ()=>{
         const {granted} = await Permissions.askAsync(Permissions.CAMERA)
         if (granted){
@@ -49,22 +79,23 @@ const CreateOrNot = ({navigation,route}) =>{
         }
     }
 
-    const handleUpload = (image)=>{
+    const handleUpload = async (image)=>{
         const data = new FormData()
         data.append('file', image)
         data.append('upload_preset', 'employeeApp')
         data.append('cloud_name', 'lperalta972')
         
-        fetch('https://api.cloudinary.com/v1_1/lperalta972/image/upload', {
+        await fetch('https://api.cloudinary.com/v1_1/lperalta972/image/upload', {
             method:'post',
             body:data
         }).then(res=>res.json()).then(data=>{
             console.log(data)
             setPicture(data.url)
-            setModal(false)
+            verify(data.url)
         }).catch(err=>{
             Alert.alert('error while uploading')
         })
+        console.log('despues de await')
     }
 
     return (

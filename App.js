@@ -22,13 +22,12 @@ function App() {
   return (
     <View style={styles.container}>
       <Stack.Navigator>
-        {/* <Stack.Screen name="Home" component={Home} options={myOptions} /> */}
         <Stack.Screen name="CreateOrNot" component={CreateOrNot} 
           options={{...myOptions}} />
         <Stack.Screen name="Login" component={Login} 
           options={{...myOptions}} />
-        {/* <Stack.Screen name="Welcome" component={Welcome} 
-          options={{...myOptions}} /> */}
+        <Stack.Screen name="Welcome" component={Welcome} 
+          options={{...myOptions}} />
         <Stack.Screen name="TryAgain" component={TryAgain} 
           options={{...myOptions}} />
       </Stack.Navigator>

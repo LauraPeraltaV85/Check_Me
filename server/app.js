@@ -54,18 +54,18 @@ app.post('/delete', (req,res)=>{
     })
 })
 
-app.post('/update', (req,res)=>{
-    Employee.findByIdAndUpdate(req.body.id, {
-        email:req.body.email,
-        pass:req.body.pass,
-        picture:req.body.picture
-    }).then(data=>{
-        console.log(data)
-        res.send(data)
-    }).catch(err=>{
-        console.log(err)
-    })
-})
+// app.post('/update', (req,res)=>{
+//     Employee.findByIdAndUpdate(req.body.id, {
+//         email:req.body.email,
+//         pass:req.body.pass,
+//         picture:req.body.picture
+//     }).then(data=>{
+//         console.log(data)
+//         res.send(data)
+//     }).catch(err=>{
+//         console.log(err)
+//     })
+// })
 
 app.listen(3000, ()=>{
     console.log('server running')

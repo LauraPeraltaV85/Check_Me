@@ -7,24 +7,24 @@ import {NeomorphBox} from 'react-native-neomorph-shadows'
 
 const TryAgain = (props)=>{
 
-    const {_id,email,pass,picture} = props.route.params.item
-    const deleteEmployee = ()=>{
-        fetch('http://10.0.2.2:3000/delete',{
-            method:'post',
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            body:JSON.stringify({
-                id:_id
-            })
-        }).then(res=>res.json())
-        .then(deletedEmp=>{
-            Alert.alert(`${deletedEmp.name} deleted`)
-            props.navigation.navigate('Home')
-        }).catch(err=>{
-            Alert.alert(`${err} something went wrong while deleting`)
-        })
-    }
+    // const {_id,email,pass,picture} = props.route.params.item
+    // const deleteEmployee = ()=>{
+    //     fetch('http://10.0.2.2:3000/delete',{
+    //         method:'post',
+    //         headers:{
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body:JSON.stringify({
+    //             id:_id
+    //         })
+    //     }).then(res=>res.json())
+    //     .then(deletedEmp=>{
+    //         Alert.alert(`${deletedEmp.name} deleted`)
+    //         props.navigation.navigate('Home')
+    //     }).catch(err=>{
+    //         Alert.alert(`${err} something went wrong while deleting`)
+    //     })
+    // }
     
     return (
         <View style={styles.root}>
@@ -39,7 +39,7 @@ const TryAgain = (props)=>{
                 </View>
                 </NeomorphBox>
                 <Title style={{color:'#FFFFFF', marginBottom:10, marginTop:30, marginLeft:10}}>Access denied for</Title>
-                <Text style={styles.mytext}>{email}</Text>
+                <Text style={styles.mytext}>@</Text>
                 <View>                             
                     <View style={styles.mybutton}>
                         <NeomorphBox style={styles.neoMorphButton}>
