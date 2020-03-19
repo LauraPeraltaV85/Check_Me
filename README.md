@@ -2,8 +2,18 @@
 
 # Check me
 
-
 Check me is an App that allows the user to manage his socialmedia, financial services apps among others, safe from intruders and undesired people. By using Two Factor Authentication we provide that only the user will have access to his apps, even if someone else has acces to his phone. 
+
+## Project's landing page
+
+https://lauraperaltav85.github.io/check-me.github.io/
+
+## Deployed App
+
+To be able to use the app please download expo app from app store, and visit:
+https://expo.io/@955/AwesomeProject
+
+If not:
 
 ## How to execute
 
