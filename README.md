@@ -34,6 +34,10 @@ nodemon app
 ```
 Now just wait for it to load in your cellphone and enjoy
 
+### Technologies used
+
+This proyect was done using React Native, Mongo DB, Mongoose, Cloudinary and Kairos API
+
 
 ## Authors
 
