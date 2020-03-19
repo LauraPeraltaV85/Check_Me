@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {StyleSheet, Image, Text, View, Modal, Alert, KeyboardAvoidingView, Platform} from 'react-native';
-import { TextInput, Button, BottomNavigation } from 'react-native-paper';
+import {StyleSheet, Image, View, Alert} from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -25,20 +25,18 @@ const Login = ({navigation,route}) =>{
     const [email, setEmail] = useState(getDetails('email'))
     const [pass, setPass] = useState(getDetails('pass'))
     const [picture, setPicture] = useState(getDetails('picture'))
-    //const [modal, setModal] = useState(false)
-   // const [enableshift,setEnableshift] = useState(false)
 
    const enroll = () => {
     fetch('https://api.kairos.com/enroll', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=UTF-8',
-            'app_id': 'b4563047',
-            'app_key': '93ef16866482b1d592900953ca280cf1'
+            'app_id': 'xxxxxxx',
+            'app_key': 'xxxxxxxxxxxxxxxxxxxxxx'
         },
           body: JSON.stringify({
             'image': picture,
-            'subject_id': 'laura@bog.com',
+            'subject_id': 'laura@holbi.com',
             "gallery_name": "MyGallery"
           })
         }).then((res) => res.json()).then((data) => {
@@ -50,48 +48,6 @@ const Login = ({navigation,route}) =>{
     }
     //enroll();
    
-   
-//    const submitData = ()=>{
-//         fetch('http://10.0.2.2:3000/send-data', {
-//             method: 'post',
-//             headers:{
-//                 'Content-Type':'application/json'
-//             },
-//             body:JSON.stringify({
-//                 email,
-//                 pass,
-//                 picture
-//             })
-//         }).then(res=>res.json()).then(data=>{
-//             Alert.alert(`${data.email} was saved successfully`) 
-//             enroll()
-//             navigation.navigate('CreateOrNot')
-             
-//         }).catch(err=>{
-//             Alert.alert(`${err}something went wrong posting database`)
-//         })
-//     }
-
-    // const updateData = ()=>{
-    //     fetch('http://10.0.2.2:3000/update', {
-    //         method: 'post',
-    //         headers:{
-    //             'Content-Type':'application/json'
-    //         },
-    //         body:JSON.stringify({
-    //             id:route.params._id,
-    //             email,
-    //             pass,
-    //             picture
-    //         })
-    //     }).then(res=>res.json()).then(data=>{
-    //         Alert.alert(`${data.name} was successfully updated`)
-    //         navigation.navigate('Home')
-    //     }).catch(err=>{
-    //         Alert.alert(`${err} something went wrong posting data`)
-    //     })
-    // }
-
     const pickFromGallery = async ()=>{
         const {granted} = await Permissions.askAsync(Permissions.CAMERA_ROLL)
         if (granted){
@@ -158,7 +114,7 @@ const Login = ({navigation,route}) =>{
                 style={{height: "100%"}}/>
             <View style={{alignItems:'center'}}>
                 <Image
-                    style={{width:140, height:190, marginTop:-500, marginBottom:60}}
+                    style={{width:120, height:160, marginTop:-500, marginBottom:60}}
                     source={require('./../assets/logo_name.png')}/>
                     <View style={{alignItems:'center', width:'175%', height:'90%'}}>
                     <NeomorphBox inner swapShadowLevel style={styles.neoMorph}>
