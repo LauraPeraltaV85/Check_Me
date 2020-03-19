@@ -32,12 +32,12 @@ const CreateOrNot = ({navigation,route}) =>{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
-                    'app_id': 'b4563047',
-                    'app_key': '93ef16866482b1d592900953ca280cf1'
+                    'app_id': 'xxxxxxxx',
+                    'app_key': 'xxxxxxxxxxxxxxxxxxxxxx'
                 },
             body: JSON.stringify({
                 'image': url,
-                'subject_id': 'laura@bog.com',
+                'subject_id': 'laura@holbi.com',
                 "gallery_name": "MyGallery"
                 })
             }).then((res) => res.json()).then((data) => {
@@ -106,7 +106,7 @@ const CreateOrNot = ({navigation,route}) =>{
                 style={{height: "100%"}}/>
             <View style={{alignItems:'center'}}>
                 <Image
-                    style={{width:140, height:190, marginTop:-500, marginBottom:60}}
+                    style={{width:120, height:160, marginTop:-500, marginBottom:60}}
                     source={require('./../assets/logo_name.png')}/>
                     <View style={{alignItems:'center', width:'175%', height:'90%'}}>
                     <NeomorphBox style={styles.neoMorphCam}>
